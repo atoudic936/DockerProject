@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  dbpg:
+    image: postgres:9.4
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: 42
+    networks:
+      - net
+    
+  app:
+    image: javapp
+    depends_on:
+      - dbpg
+    networks:
+      - net
+
+networks:
+  net:

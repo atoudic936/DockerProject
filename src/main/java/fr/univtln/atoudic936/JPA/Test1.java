@@ -5,6 +5,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Hello world!
  *
@@ -13,9 +15,27 @@ public class Test1
 {
     public static void main( String[] args )
     {
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory("testpostgresqllocal");
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = null;
+        int i;
+        for (i = 0; i < 10; i++) {
+            try {
+                EntityManagerFactory emf = Persistence
+                        .createEntityManagerFactory("testpostgresqllocal");
+                em = emf.createEntityManager();
+                i = 11;
+            }
+            catch (Exception e){
+                try {
+                    sleep(1000);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+
+        if (i == 10){
+            System.exit(1);
+        }
 
         Personne p1 = new Personne("Pierre","Durand");
 

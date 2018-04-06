@@ -38,4 +38,13 @@ public class Pathologie {
 
     public Pathologie() {
     }
+
+    @Override
+    public String toString() {
+        return "Pathologie{" +
+                "nom='" + nom + '\'' +
+                ", description='" + description + '\'' +
+                ", chiens=" + chiens +
+                '}';
+    }
 }

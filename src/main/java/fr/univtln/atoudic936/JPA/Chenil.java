@@ -31,4 +31,12 @@ public class Chenil {
 
     public Chenil() {
     }
+
+    @Override
+    public String toString() {
+        return "Chenil{" +
+                "id=" + id +
+                ", chiens=" + chiens +
+                '}';
+    }
 }

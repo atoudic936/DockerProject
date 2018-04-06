@@ -5,13 +5,14 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import static java.lang.Thread.sleep;
+
 public class Test2 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) throws InterruptedException {
+
         EntityManagerFactory emf = Persistence
                 .createEntityManagerFactory("testpostgresqllocal");
         EntityManager em = emf.createEntityManager();
-
 
         Personne p = em.find(Personne.class, 1);
         System.out.println(p);
@@ -27,8 +28,8 @@ public class Test2 {
 
         Chien c = em.find(Chien.class, 2);
         System.out.println(c);
-        transac.begin();
-        em.remove(c);
-        transac.commit();
+//        transac.begin();
+//        em.remove(c);
+//        transac.commit();
     }
 }
